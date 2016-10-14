@@ -45,6 +45,6 @@ setup(
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     py_modules=[splitext(basename(i))[0] for i in glob.glob("src/*.py")],
-    install_requires=[],
+    install_requires=read('requirements.txt').split("\n"),
     extras_require={},
 )
