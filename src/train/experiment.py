@@ -3,6 +3,7 @@ class Experiment:
         self.agent = agent
 
     def run(self, nb_run=1):
+        last_result = None
         for i in range(nb_run):
             last_result = self.run_once()
         return last_result
