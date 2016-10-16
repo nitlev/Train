@@ -1,5 +1,8 @@
+from src.train.action import Actions
+
+
 class Agent:
-    def __init__(self, state=None, update_function=None):
+    def __init__(self, state=None, update_function=lambda s, a: s):
         self.state = state
         self.update_function = update_function
 
@@ -8,3 +11,6 @@ class Agent:
 
     def update_state(self, action):
         self.state = self.update_function(self.state, action)
+
+    def possible_actions(self):
+        return Actions()

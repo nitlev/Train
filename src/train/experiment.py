@@ -9,4 +9,10 @@ class Experiment:
         return last_result
 
     def run_once(self):
-        return 1
+        while True:
+            actions = self.agent.possible_actions()
+            if actions.is_empty():
+                return 1
+            else:
+                action = self.agent.choose_best_action(actions)
+                self.agent.update_state(action)
