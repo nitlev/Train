@@ -5,10 +5,10 @@ class Experiment:
     def run(self, nb_run=1):
         last_result = None
         for i in range(nb_run):
-            last_result = self.run_once()
+            last_result = self._run_once()
         return last_result
 
-    def run_once(self):
+    def _run_once(self):
         while True:
             actions = self.agent.possible_actions()
             if actions.is_empty():

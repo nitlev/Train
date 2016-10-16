@@ -1,4 +1,5 @@
 from mock import MagicMock
+from train.action import Actions
 from train.agent import Agent
 
 
@@ -8,7 +9,7 @@ class TestAgent:
         agent = Agent()
 
         # When
-        actions = ["do nothing"]
+        actions = Actions("do nothing")
         decision = agent.choose_best_action(actions)
 
         # Assert
@@ -17,7 +18,7 @@ class TestAgent:
     def test_update_should_call_update_function(self):
         # Given
         mock_function = MagicMock()
-        agent = Agent(update_function=mock_function)
+        agent = Agent(update_state_function=mock_function)
 
         # When
         action = "Do nothing"
