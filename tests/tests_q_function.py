@@ -7,7 +7,7 @@ class Test:
     def test_q_function_should_return_vector(self):
         # Given
         q_function = ZeroQFunction()
-        state = State()
+        state = State([])
         two_actions = Actions("Do Nothing", "Do Something")
         three_actions = Actions("Do Nothing", "Do Something",
                                 "Do Something else")
