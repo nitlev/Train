@@ -3,7 +3,7 @@ from train.experiment import Experiment
 
 
 class TestExperiment:
-    def test_experiment_method_run_should_return_one(self):
+    def test_experiment_run_should_return_one_when_running_once(self):
         # Given
         agent = Agent()
         experiment = Experiment(agent)

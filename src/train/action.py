@@ -7,3 +7,6 @@ class Actions:
 
     def __getitem__(self, item):
         return self.actions[item]
+
+    def __len__(self):
+        return len(self.actions)

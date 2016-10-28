@@ -1,6 +1,8 @@
 from random import random, choice
+import numpy as np
 
 from src.train.action import Actions
+from src.train.q_function import ZeroQFunction
 
 
 def state_to_empty_actions(state):
@@ -8,14 +10,29 @@ def state_to_empty_actions(state):
 
 
 class Agent:
-    def __init__(self, state=None, update_state_function=lambda s, a: s,
-                 state_to_action_function=state_to_empty_actions):
+    def __init__(self, state=None, q_function=None,
+                 update_state_function=lambda s, a: s,
+                 state_to_actions_function=state_to_empty_actions):
+        """
+        An agent is the object moving or acting in your experiment. It has a
+        state, which is updated by its update_state_function, and a q_function,
+        which, given a state and some actions, evaluate the value of each
+        actions. The possible states accessible from a given state is computed
+        by the state_to_action_function.
+        :param state:
+        :param q_function:
+        :param update_state_function:
+        :param state_to_actions_function:
+        """
         self.state = state
+        self.q_function = q_function if q_function is not None \
+            else ZeroQFunction()
         self.update_state_function = update_state_function
-        self.state_to_actions_function = state_to_action_function
+        self.state_to_actions_function = state_to_actions_function
 
     def choose_best_action(self, actions):
-        return actions[0]
+        q_values = self.q_function.evaluate(self.state, actions)
+        return actions[np.argmax(q_values)]
 
     def update_state(self, action):
         self.state = self.update_state_function(self.state, action)
