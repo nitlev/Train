@@ -1,6 +1,7 @@
 from src.train.action import Actions
 from src.train.state import State
 
+import numpy as np
 
 def state_and_actions_to_matrix(state: State, actions: Actions):
     return [state.to_list() + [action] for action in actions]
@@ -22,3 +23,12 @@ class ZeroQFunction(object):
     @staticmethod
     def evaluate(state: State, actions: Actions):
         return [0] * len(actions)
+
+
+class RandomQFunction(object):
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def evaluate(state: State, actions: Actions):
+        return np.random.rand(len(actions))
