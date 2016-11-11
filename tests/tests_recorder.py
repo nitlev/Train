@@ -20,3 +20,4 @@ class TestRecorder:
 
         # Assert
         assert len(list(recorder.all_transitions)) == 1
+        assert len(list(recorder.all_states)) == 2

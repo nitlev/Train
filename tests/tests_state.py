@@ -22,3 +22,31 @@ class TestState:
         # Assert
         assert new_state is not state
         assert new_state.to_list() == [1, 2]
+
+    def test_states_are_iterable(self):
+        # Given
+        state1 = State([1, 2, 3])
+        state2 = State([0, 1])
+        my_list = []
+
+        # When
+        a, b, c = state1
+        for element in state2:
+            my_list.append(element)
+
+        # Assert
+        assert a == 1
+        assert b == 2
+        assert c == 3
+        assert my_list == [0, 1]
+
+    def test_update_state_return_new_state(self):
+        # Given
+        state = State([])
+
+        # When
+        new_state = state.update_function(None)
+
+        # Assert
+        assert isinstance(new_state, State)
+        assert new_state is not state

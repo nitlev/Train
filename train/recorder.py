@@ -25,6 +25,11 @@ class Recorder(object):
         return (transition for episode in self.episodes.values()
                 for transition in episode["transitions"])
 
+    @property
+    def all_states(self):
+        return (transition for episode in self.episodes.values()
+                for transition in episode["states"])
+
 
 class EmptyRecorder(Recorder):
     def __init__(self):
