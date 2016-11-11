@@ -1,7 +1,8 @@
 class Episode(object):
-    def __init__(self, agent, verbosity=0):
-        self.verbosity = verbosity
+    def __init__(self, agent, episode_id, verbosity=0):
         self.agent = agent
+        self.episode_id = episode_id
+        self.verbosity = verbosity
 
     def run(self):
         actions = self.agent.possible_actions()

@@ -23,7 +23,7 @@ class TestEpisode:
         actions = ActionMock()
         agent = MagicMock(Agent)
         agent.possible_actions.return_value = actions
-        episode = Episode(agent)
+        episode = Episode(agent, 0)
 
         # When
         episode.run()
