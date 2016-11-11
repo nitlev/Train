@@ -1,3 +1,6 @@
+from train.episode import Episode
+
+
 class Experiment:
     def __init__(self, agent):
         self.agent = agent
@@ -6,18 +9,11 @@ class Experiment:
     def run(self, nb_run=1, verbose=0):
         last_result = None
         for i in range(nb_run):
-            last_result = self._run_once(verbose)
+            last_result = self.run_one_episode(verbose)
         return last_result
 
-    def _run_once(self, verbose=0):
+    def run_one_episode(self, verbose=0):
         self.agent = self.agent.set_state(self.initial_state)
-        while True:
-            if verbose:
-                print(self.agent.state)
-            actions = self.agent.possible_actions()
-            if actions.is_empty():
-                print("End of episode.")
-                return 1
-            else:
-                action = self.agent.choose_best_action(actions)
-                self.agent.update_state(action)
+        episode = Episode(self.agent, verbose)
+        result = episode.run()
+        return result
