@@ -24,3 +24,14 @@ class Recorder(object):
     def all_transitions(self):
         return (transition for episode in self.episodes.values()
                 for transition in episode["transitions"])
+
+
+class EmptyRecorder(Recorder):
+    def __init__(self):
+        super(EmptyRecorder, self).__init__()
+
+    def record(self, episode):
+        self.current_episode = episode
+
+    def record_state(self, state):
+        pass

@@ -22,6 +22,7 @@ class TestEpisode:
         # Given
         actions = ActionMock()
         agent = MagicMock(Agent)
+        agent.state = None
         agent.possible_actions.return_value = actions
         episode = Episode(agent, 0)
 
@@ -30,4 +31,3 @@ class TestEpisode:
 
         # Assert
         agent.update_state.assert_called_once()
-

@@ -1,6 +1,7 @@
 from train.action import Actions
 from train.agent import Agent
 from train.experiment import Experiment
+from train.recorder import Recorder
 from train.state import State
 from train.q_function import RandomQFunction
 
@@ -32,4 +33,17 @@ class TestFullRunExperiment:
 
         # Assert
         assert experiment.agent.state[1] == 0
+
+    def test_run_full_train_experiment_with_record(self):
+        # Given
+        state = State([0, 20]).update_function(update_state)
+        agent = Agent(state, RandomQFunction(), state_to_actions)
+        recorder = Recorder()
+        experiment = Experiment(agent)
+
+        # When
+        experiment.run(recorder=recorder)
+
+        # Assert
+        assert len(list(recorder.all_transitions)) > 0
 

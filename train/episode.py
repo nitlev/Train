@@ -1,18 +1,21 @@
+from train.recorder import EmptyRecorder
+
+
 class Episode(object):
-    def __init__(self, agent, episode_id, verbosity=0):
+    def __init__(self, agent, episode_id, recorder=None):
         self.agent = agent
         self.episode_id = episode_id
-        self.verbosity = verbosity
+        self.recorder = recorder or EmptyRecorder()
 
     def run(self):
-        actions = self.agent.possible_actions()
+        self.recorder.record(self)
+        self.recorder.record_state(self.agent.state)
 
+        actions = self.agent.possible_actions()
         while not actions.is_empty():
-            if self.verbosity:
-                print(self.agent.state)
-            actions = self.agent.possible_actions()
             best_action = self.agent.choose_best_action(actions)
             self.agent.update_state(best_action)
+            self.recorder.record_state(self.agent.state)
+            actions = self.agent.possible_actions()
 
-        print("End of episode.")
         return 1
