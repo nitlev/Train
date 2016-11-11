@@ -1,8 +1,9 @@
 from random import random, choice
+
 import numpy as np
 
-from src.train.action import Actions
-from src.train.q_function import ZeroQFunction
+from train.action import Actions
+from train.q_function import ZeroQFunction
 
 
 def state_to_empty_actions(state):
@@ -36,6 +37,9 @@ class Agent:
     def possible_actions(self):
         return self.state_to_actions_function(self.state)
 
+    def set_state(self, state):
+        return Agent(state, self.q_function, self.state_to_actions_function)
+
 
 # noinspection PyMissingConstructor
 class ExploratoryAgent(Agent):
@@ -55,3 +59,10 @@ class ExploratoryAgent(Agent):
 
     def possible_actions(self):
         return self.agent.possible_actions()
+
+    def set_state(self, state):
+        return ExploratoryAgent(self.agent.set_state(state), self.epsilon)
+
+    @property
+    def state(self):
+        return self.agent.state

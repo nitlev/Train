@@ -1,7 +1,7 @@
-from src.train.action import Actions
-from src.train.state import State
-
+from train.action import Actions
+from train.state import State
 import numpy as np
+
 
 def state_and_actions_to_matrix(state: State, actions: Actions):
     return [state.to_list() + [action] for action in actions]

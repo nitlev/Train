@@ -5,7 +5,8 @@ def identity(state, action):
 class State:
     def __init__(self, state_values, update_function=None):
         self.state_values = state_values
-        self._update_function = update_function if update_function is not None \
+        self._update_function = update_function \
+            if update_function is not None \
             else identity
 
     def update_function(self, function):
@@ -21,3 +22,7 @@ class State:
 
     def __getitem__(self, item):
         return self.state_values[item]
+
+    def __repr__(self):
+        strings = [str(value) for value in self.state_values]
+        return "State({})".format(", ".join(strings))

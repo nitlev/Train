@@ -10,3 +10,8 @@ class Actions:
 
     def __len__(self):
         return len(self.actions)
+
+    def __repr__(self):
+        return "Actions({})".format(
+            ",".join([str(action for action in self.actions)])
+        )
