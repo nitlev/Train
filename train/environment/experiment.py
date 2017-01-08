@@ -1,4 +1,4 @@
-from train.episode import Episode
+from train.environment.episode import Episode
 
 
 class Experiment:

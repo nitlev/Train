@@ -1,4 +1,4 @@
-from train.action import Actions
+from train.learning.action import Actions
 
 
 class TestActions:

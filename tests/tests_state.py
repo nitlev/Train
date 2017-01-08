@@ -1,4 +1,4 @@
-from train.state import State
+from train.learning.state import State
 
 
 class TestState:

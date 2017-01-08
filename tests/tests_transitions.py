@@ -1,4 +1,4 @@
-from train.transition import Transition
+from train.learning.transition import Transition
 
 
 class TestTransitions:

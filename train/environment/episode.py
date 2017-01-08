@@ -1,4 +1,4 @@
-from train.recorder import EmptyRecorder
+from train.environment.recorder import EmptyRecorder
 
 
 class Episode(object):

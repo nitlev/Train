@@ -1,6 +1,7 @@
-from train.action import Actions
-from train.state import State
 import numpy as np
+from train.learning.state import State
+
+from train.learning.action import Actions
 
 
 def state_and_actions_to_matrix(state: State, actions: Actions):

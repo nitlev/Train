@@ -1,9 +1,10 @@
-from train.action import Actions
-from train.agent import Agent
-from train.experiment import Experiment
-from train.recorder import Recorder
-from train.state import State
-from train.q_function import RandomQFunction
+from train.environment.experiment import Experiment
+from train.environment.recorder import Recorder
+
+from train.learning.state import State
+from train.learning.agent import Agent
+from train.learning.action import Actions
+from train.learning.q_function import RandomQFunction
 
 
 def update_state(state, action):

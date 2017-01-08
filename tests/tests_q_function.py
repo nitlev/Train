@@ -1,6 +1,7 @@
-from train.action import Actions
-from train.q_function import ZeroQFunction, RandomQFunction
-from train.state import State
+from train.learning.state import State
+
+from train.learning.action import Actions
+from train.learning.q_function import ZeroQFunction, RandomQFunction
 
 
 class Test:

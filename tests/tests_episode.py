@@ -1,8 +1,8 @@
 from mock import MagicMock
-from train.action import Actions
 
-from train.agent import Agent
-from train.episode import Episode
+from train.learning.agent import Agent
+from train.learning.action import Actions
+from train.environment.episode import Episode
 
 
 class ActionMock(Actions):

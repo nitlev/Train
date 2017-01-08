@@ -1,5 +1,5 @@
-from train.agent import Agent
-from train.experiment import Experiment
+from train.learning.agent import Agent
+from train.environment.experiment import Experiment
 
 
 class TestExperiment:

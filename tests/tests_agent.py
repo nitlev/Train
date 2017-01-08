@@ -1,8 +1,8 @@
 from mock import MagicMock
+from train.learning.state import State
 
-from train.action import Actions
-from train.agent import Agent
-from train.state import State
+from train.learning.agent import Agent
+from train.learning.action import Actions
 
 
 class TestAgent:

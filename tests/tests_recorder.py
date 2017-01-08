@@ -1,8 +1,8 @@
 from mock import MagicMock
 
-from train.episode import Episode
-from train.recorder import Recorder
-from train.state import State
+from train.learning.state import State
+from train.environment.episode import Episode
+from train.environment.recorder import Recorder
 
 
 class TestRecorder:

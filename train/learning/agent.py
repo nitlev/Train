@@ -2,8 +2,8 @@ from random import random, choice
 
 import numpy as np
 
-from train.action import Actions
-from train.q_function import ZeroQFunction
+from train.learning.action import Actions
+from train.learning.q_function import ZeroQFunction
 
 
 def state_to_empty_actions(state):
