@@ -40,6 +40,9 @@ class Agent:
     def set_state(self, state):
         return Agent(state, self.q_function, self.state_to_actions_function)
 
+    def learn_from_records(self, records):
+        self.q_function.update_from_records(records)
+
 
 # noinspection PyMissingConstructor
 class ExploratoryAgent(Agent):

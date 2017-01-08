@@ -1,3 +1,5 @@
+import numpy as np
+
 from train.transition import Transition
 
 
@@ -17,7 +19,7 @@ class Recorder(object):
         episode_states = episode["states"]
         episode_states.append(state)
         if len(episode_states) > 1:
-            transition = Transition(episode_states[-1], state, None)
+            transition = Transition(episode_states[-1], state, None, None)
             episode["transitions"].append(transition)
 
     @property
@@ -29,6 +31,9 @@ class Recorder(object):
     def all_states(self):
         return (transition for episode in self.episodes.values()
                 for transition in episode["states"])
+
+    def some_transitions(self, size):
+        return np.random.choice(list(self.all_transitions), size=size)
 
 
 class EmptyRecorder(Recorder):

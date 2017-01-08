@@ -15,6 +15,11 @@ class QFunction(object):
         matrix = state_and_actions_to_matrix(state, actions)
         return self.model.predict(matrix)
 
+    def update_from_record(self, records):
+        transitions = records.some_transitions(20)
+        matrix = [transition.to_list() for transition in transitions]
+        self.model.train(matrix)
+
 
 class ZeroQFunction(object):
     def __init__(self):
